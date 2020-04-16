@@ -22,5 +22,8 @@ Goto http://localhost/convert?id={GOOGLE_DRIVE_ID}
 - [https://github.com/Yotsubal/YDrive-Google-Drive-Proxy](https://github.com/Yotsubal/YDrive-Google-Drive-Proxy) (Apache License)
 - [https://github.com/cosenary/Simple-PHP-Cache](https://github.com/cosenary/Simple-PHP-Cache) (BSD 3-Clause License)
 
+## Contribution
+When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
+
 ## Support
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B11M8VJ)
