@@ -1,8 +1,8 @@
 # videojs-google-multi-resolution
 This is an open source project. Google Drive Streaming
 
-![GitHub forks](https://img.shields.io/github/forks/YuuDrive/videojs-google-multi-resolution)
-![GitHub stars](https://img.shields.io/github/stars/YuuDrive/videojs-google-multi-resolution)
+![GitHub forks](https://img.shields.io/github/forks/yuudrive/videojs-google-multi-resolution)
+![GitHub stars](https://img.shields.io/github/stars/yuudrive/videojs-google-multi-resolution)
 
 ## Requirements
 - PHP 7+
