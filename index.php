@@ -11,10 +11,10 @@ Flight::route('/convert', function(){
     Flight::redirect(base_url() . '/' . $encrypted);
 });
 
-Flight::route('/@id', function($id) {
+Flight::route('/@encrypted', function($encrypted) {
     try {
         $request = Flight::request();
-        $decrypted_id = \App\Lib\UnsafeCrypto::decrypt($id, "5e987a39b39e4", true);
+        $decrypted_id = \App\Lib\UnsafeCrypto::decrypt($encrypted, "5e987a39b39e4", true);
         $s = new \App\Lib\ProxyPlayer();
         $s->setID($decrypted_id);
         $resolutions = $s->getResolution();
@@ -25,7 +25,7 @@ Flight::route('/@id', function($id) {
 
         if($file) {
             $data = [
-                'id' => $id,
+                'id' => $encrypted,
                 'file' => $file,
                 'resolutions' => $resolutions,
                 'csrf' => Flight::get('csrf'),
@@ -40,10 +40,10 @@ Flight::route('/@id', function($id) {
     }
 });
 
-Flight::route('/get-resolution/@id', function($id=null){
+Flight::route('/get-resolution/@encrypted', function($encrypted=null){
     try {
         $request = Flight::request();
-        $decrypted_id = \App\Lib\UnsafeCrypto::decrypt($id, "5e987a39b39e4", true);
+        $decrypted_id = \App\Lib\UnsafeCrypto::decrypt($encrypted, "5e987a39b39e4", true);
         $s = new \App\Lib\ProxyPlayer();
         $s->setID($decrypted_id);
         $resolutions = $s->getResolution();
@@ -53,16 +53,16 @@ Flight::route('/get-resolution/@id', function($id=null){
     }
 });
 
-Flight::route('/stream/@id', function($id=null){
+Flight::route('/stream/@id', function($encrypted=null){
     try {
         $request = Flight::request();
-        $decrypted_id = \App\Lib\UnsafeCrypto::decrypt($id, "5e987a39b39e4", true);
+        $decrypted_id = \App\Lib\UnsafeCrypto::decrypt($encrypted, "5e987a39b39e4", true);
     
         $file = file_info($decrypted_id, "name,thumbnailLink");
     
         if($file) {
             $s = new \App\Lib\ProxyPlayer();
-            $s->setID($file->result->file_id);
+            $s->setID($decrypted_id);
             $s->setDownload($request->query["alt"]  ?? "");
             $s->setResolution($request->query["res"]  ?? "sd");
             return $s->stream();
